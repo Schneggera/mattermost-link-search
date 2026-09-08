@@ -4,8 +4,8 @@
 // @namespace   Violentmonkey Scripts
 // @version     1.0.0
 // @match       YourURL
-// @downloadURL https://github.com/Schneggera/mattermost-link-search/link_extractor.js
-// @updateURL   https://github.com/Schneggera/mattermost-link-search/link_extractor.js
+// @downloadURL https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.js
+// @updateURL   https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.js
 // ==/UserScript==
 
 (function () {
