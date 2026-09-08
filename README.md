@@ -4,5 +4,5 @@ This userscript adds a button to Mattermost to extract links from the current ch
 ## Installation
 
 1. Install a user script manager extension like [Violentmonkey](https://violentmonkey.github.io/).
-2. Click [here](https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.js) to install.
+2. Click [here](https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.user.js) to install.
 
