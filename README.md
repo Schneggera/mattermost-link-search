@@ -9,3 +9,5 @@ This userscript adds a button to Mattermost to extract links from the current ch
     1. Click on edit
     2. Replace YourURL with the URL of your mattermost instance, e.g. https://mattermost.xyz.com/*
 
+## How it works
+![Screenshot](assets/screenshot.png)
