@@ -2,11 +2,31 @@
 // @name        Mattermost Link Extractor
 // @description Extract links from Mattermost channels
 // @namespace   Violentmonkey Scripts
-// @version     1.0.0
+// @version     1.0.1
 // @match       YourURL
 // @downloadURL https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.user.js
 // @updateURL   https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.user.js
+// @grant       GM_addStyle
 // ==/UserScript==
+
+GM_addStyle(`
+  .link-extractor-btn{
+  margin: 0 8px;
+  padding: 4px 10px;
+  cursor: pointer;
+  color: rgba(var(--text-color), var(--text-opacity));
+  background: rgba(var(--bg-color), var(--bg-opacity));
+  border: none;
+  --bg-color: var(--sidebar-header-text-color-rgb);
+  --text-color: var(--sidebar-header-text-color-rgb);
+  }
+  .link-extractor-btn:hover{
+    --bg-opacity: 0.08;
+    --text-opacity: 0.72;
+  }
+  .link-extractor-result-btn{
+    margin-top: 12px;}
+`);
 
 (function () {
   const baseUrl = GM_info.script.matches[0].split('/*')[0];
@@ -76,7 +96,7 @@
       const li = document.createElement('li');
       li.style.cssText = 'margin: 8px 0; word-break: break-all;';
       li.innerHTML = `<a href="${r.link}" target="_blank" style="color: #1a73e8;">${r.link}</a>
-        <a href="${r.permalink}" target="_blank" style="margin-left: 8px; color: #888; font-size: 0.85em;">(jump to message)</a>
+        <a href="${r.permalink}" target="_blank" style="margin-left: 8px; color: #888; font-size: 0.85em; color: var(--center-channel-text);">(jump to message)</a>
         <div style="color: #888; font-size: 0.8em; margin-top: 2px;">${r.username} &middot; ${r.date}</div>`;
       list.appendChild(li);
     });
@@ -98,7 +118,7 @@
 
     const box = document.createElement('div');
     box.style.cssText = `
-      background: white; padding: 20px; border-radius: 8px;
+      background: var(--center-channel-bg); padding: 20px; border-radius: 8px;
       max-width: 600px;
     `;
 
@@ -109,11 +129,11 @@
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.placeholder = 'Search links or usernames...';
-    searchInput.style.cssText = 'width: 100%; padding: 6px; margin-bottom: 12px; box-sizing: border-box;';
+    searchInput.style.cssText = 'width: 100%; padding: 6px; margin-bottom: 12px; box-sizing: border-box; background: var(--center-channel-bg); border:var(--border-default)';
     box.appendChild(searchInput);
 
     const list = document.createElement('ul');
-    list.style.cssText = 'list-style: none; padding: 0; max-height: 80vh; overflow-y: auto;';
+    list.style.cssText = 'list-style: none; padding: 0; max-height: 80vh; overflow-y: auto; background: var(--center-channel-bg);';
     box.appendChild(list);
 
     renderList(list, results);
@@ -128,7 +148,7 @@
 
     const copyBtn = document.createElement('button');
     copyBtn.textContent = 'Copy all links';
-    copyBtn.style.cssText = 'margin-top: 12px; margin-right: 8px; padding: 4px 10px; cursor: pointer;';
+    copyBtn.className = 'link-extractor-btn';
     copyBtn.addEventListener('click', () => {
       const text = results.map(r => r.link).join('\n');
       navigator.clipboard.writeText(text).then(() => {
@@ -140,7 +160,7 @@
 
     const closeBtn = document.createElement('button');
     closeBtn.textContent = 'Close';
-    closeBtn.style.cssText = 'margin-top: 12px; padding: 4px 10px; cursor: pointer;';
+    closeBtn.className = 'link-extractor-btn';
     closeBtn.addEventListener('click', () => overlay.remove());
     box.appendChild(closeBtn);
 
@@ -221,7 +241,6 @@
     const btn = document.createElement('button');
     btn.textContent = 'Extract Links';
     btn.className = 'link-extractor-btn';
-    btn.style.cssText = 'margin: 0 8px; padding: 4px 10px; cursor: pointer;';
     btn.addEventListener('click', extractLinks);
 
     container.prepend(btn);

@@ -1,5 +1,5 @@
 # mattermost-link-search
-This userscript adds a button to Mattermost to extract links from the current channel.
+This userscript adds a button to Mattermost to extract links from the current channel or direct messages.
 
 ## Installation
 
