@@ -2,7 +2,7 @@
 // @name        Mattermost Link Extractor
 // @description Extract links from Mattermost channels
 // @namespace   Violentmonkey Scripts
-// @version     1.0.1
+// @version     1.0.2
 // @match       YourURL
 // @downloadURL https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.user.js
 // @updateURL   https://raw.githubusercontent.com/Schneggera/mattermost-link-search/refs/heads/main/link_extractor.user.js
