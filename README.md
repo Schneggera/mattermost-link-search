@@ -10,4 +10,6 @@ This userscript adds a button to Mattermost to extract links from the current ch
     2. Replace YourURL with the URL of your mattermost instance, e.g. https://mattermost.xyz.com/*
 
 ## How it works
+![Screenshot](assets/screenshot_button.png)
+
 ![Screenshot](assets/screenshot.png)
