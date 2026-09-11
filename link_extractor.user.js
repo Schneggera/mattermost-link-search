@@ -148,7 +148,7 @@ GM_addStyle(`
 
     const copyBtn = document.createElement('button');
     copyBtn.textContent = 'Copy all links';
-    copyBtn.className = 'link-extractor-btn';
+    copyBtn.className = 'link-extractor-btn link-extractor-result-btn';
     copyBtn.addEventListener('click', () => {
       const text = results.map(r => r.link).join('\n');
       navigator.clipboard.writeText(text).then(() => {
@@ -160,7 +160,7 @@ GM_addStyle(`
 
     const closeBtn = document.createElement('button');
     closeBtn.textContent = 'Close';
-    closeBtn.className = 'link-extractor-btn';
+    closeBtn.className = 'link-extractor-btn link-extractor-result-btn';
     closeBtn.addEventListener('click', () => overlay.remove());
     box.appendChild(closeBtn);
 
